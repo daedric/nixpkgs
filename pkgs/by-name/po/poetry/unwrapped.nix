@@ -47,7 +47,7 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "python-poetry";
     repo = "poetry";
-    rev = "refs/tags/${version}";
+    tag = version;
     hash = "sha256-YR0IgDhmpbe8TyTMP1cjUxGRnrfV8CNHkPlZrNcnof0=";
   };
 
