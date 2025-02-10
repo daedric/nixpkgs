@@ -4,19 +4,21 @@
   php,
   nixosTests,
 }:
-
 php.buildComposerProject2 (finalAttrs: {
   pname = "davis";
-  version = "5.0.2";
-
+  version = "5.1.3";
   src = fetchFromGitHub {
     owner = "tchapi";
     repo = "davis";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-Zl+6nrgspyg6P9gqYwah81Z6Mtni6nUlCp4gTjJWn9M=";
+    rev = "49f2a24d90a47615ab072fdb3faaf0909d9157dc";
+    hash = "sha256-/mZqrnSIVcZHQXlQ2omCKYVIJgebzYtDQlMvimrxC+g=";
   };
 
-  vendorHash = "sha256-pCWM1kgk30Au9i8TflrmZXw/PJmo3tdW565BXwncsZU=";
+  vendorHash = "sha256-7evcZ2ixB7DJEk3XZmStaS4/giC0BQFj+KkokwfgT1U";
+
+  composerNoPlugins = false;
+  composerNoScripts = false;
+  composerNoDev = false;
 
   postInstall = ''
     chmod -R u+w $out/share
