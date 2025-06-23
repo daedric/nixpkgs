@@ -16,12 +16,17 @@ buildGoModule (finalAttrs: {
     hash = "sha256-3++w9AG70UMO6ProIBedhMs5q7Pk+pg8J50yIhnEzEM=";
   };
   vendorHash = "sha256-ZdkpgZbXchDp5kiEgCsSsd3/ltltSRjOuTPOhiBEloc=";
+  CGO_ENABLED = true;
+  GOFLAGS = [
+    "-tags=full,fts5,netgo"
+  ];
 
   subPackages = [
     "cmd/fleet"
   ];
 
   ldflags = [
+    ''-extldflags "-static"''
     "-X github.com/fleetdm/fleet/v4/server/version.appName=fleet"
     "-X github.com/fleetdm/fleet/v4/server/version.version=${finalAttrs.version}"
   ];
